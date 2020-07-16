@@ -24,20 +24,16 @@ class ClassComponent extends Component {
   shouldComponentUpdate(nextProps, nextState){
     echo('shouldComponentUpdate()', 'props', this.props, nextProps, 'state', this.state, nextState)
 
-    // Should we ever be in a scenario where we should only rerender on a particular data change
-    const ignore = this.state.ignore === nextState.ignore
-    const listen = true
+    // Here we can specifically listen to what value has changed
+    const condition_a = this.state.ignore === nextState.ignore // did state.ignore change?
+    const condition_b = true // sample code, trigger render regardless.
 
-    // Because we are skipping a render, the input still contains the value of the previous render
-    // When you make a change to the input, it uses that value to reupdate the state.
-    // So don't be fooled, the onChangeHandler is called!
-
-    return ignore || listen
+    return condition_a || condition_b
   }
 
   onChangeHandler = (e) => { // this is a class variable, that holds a function that has access to "this" on a callback.
     const { name, value } = e.target // tree shaking `name` and `value` from the event.target object
-    console.log('updating this.state.' + name, 'with "' + value + '"' )
+    echo(`updating this.state.${name} with '${value}'`)
 
     this.setState({
       ...this.state, // copy entire current state, this "copy" will make the component rerender regardless what has changed.
