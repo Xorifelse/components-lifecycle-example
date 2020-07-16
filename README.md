@@ -1,6 +1,5 @@
 # Example code of function components vs class components
 
-
 ## Commands
 
 CRA:
