@@ -1,26 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import ExampleA from './app/A'
+import ExampleB from './app/B'
+import ExampleC from './app/C'
 
-export default App;
+export default () => (
+  <>
+    <ExampleA title="this is a function component with hooks" />
+    <ExampleB title="this is a class component" />
+    <ExampleC title="this is a class component with typescript"/>
+  </>
+)
